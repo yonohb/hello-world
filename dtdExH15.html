@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<link type="text/css" rel="stylesheet" href="dtdExercise.css"/> 
+	<title>Övningar i XML/DTD</title>
+	<style>*{margin:10px; padding:0;}
+		img {border:1px solid black;}</style>
+</head>
+<body>
+	<div>
+		<h1>Övning i XML/DTD</h1>
+		<h2>Steg 1</h2>
+		<p>Denna övning är för att förstå "välformadhet" av en xml-fil och hur dtd styr "giltighet" på xml-filen. I övningen tittar vi också på hur EditiX eller en webbläsare (FireFox) reagerar vid olika regelbrott.</p>
+		<p>Först skapar du en mapp i någonstans på din dator (om det är en av högskolans datorer, i arean F)/något minne. T.ex döper jag den xmlOvning. OBS: Svenska speciella tecken åäö och mellanslag får inte vara med i mapp- eller filnamn.  
+			Först försäkrar du om kodningschemat är rätt genom att klicka <strong>File->Encoding->UTF-8</strong> och sedan skapar du ny xml-fil genom att klicka <strong>File -> New document</strong>. Sedan väljer du Standard XML document i det lilla fönstret New document och klickar OK. </p>
+		<p>Ett nytt dokument öppnas i editorn. Det ska står på första raden där så här:</p>
+		<code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br/></code>
+		
+			<p>Den är inte en fil än. Du måste döpa denna och bestämma var du vill spara. Då blir det en fil. Du klickar<strong>File->Save as</strong>och väljer var filen sparas, i mappen du har skapat, och på vilket namn. Innan du sparar genom klicka Save, kontrollera om det är XML document (*.xml) är valt som files of type. </p>
+		<p>Du ser i fliken ovan dokumentet har fått namnet du valt. Om du ställer muspekaren på filnamnet, visas var filen är sparad också. På så sätt kan du urskilja filerna med samma namn, men du bör undvika döpa fler filer med samma namn för säkerhets skull.</p>
+		<p>Den allra första raden högst upp i dokumentet ska du inte röra på. Inte ett enda mellanslag får inte förekomma före xml-deklarationen. Om du är osäker om xml-deklarationen och kommentartaggen, kan du gå tillbaka till <a href="http://www.w3schools.com/xml/default.asp">w3schools.com 's xml tutorial</a>. Du fyller på filen som visas nedan. Var noga med att inte ha xml-deklarationen två gånger och. Sedan sparar du filen igen. Nu har din xml-fil innehåll men inte länkad till någon dtd. Med <strong>ctrl + k</strong>aktiveras EditiX:s xml-kontrollfunktion.</p>
+		
+		<code></br>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br/>
+&lt;collection&gt;<br/>
+&lt;book id='a1'&gt;<br/>
+&lt;isbn>0385&lt;/isbn&gt;<br/>
+&lt;title>The Da Vinch Code&lt;/title&gt;<br/>
+&lt;author sex="male"&gt;<br/>
+&lt;gname>Dan&lt;/gname&gt;<br/>
+&lt;fname>Brown&lt;/fname&gt;<br/>
+&lt;/author&gt;<br/>
+&lt;pages&gt;454 sidor&lt;/pages&gt;<br/>
+&lt;/book&gt;<br/>
+&lt;/collection&gt;<br/>
+
+</code>
+		<p>Ser du något felmeddelande av EditiX i nedersta delen av editorn? Om du får, bryter du någon xml-regel och därmed är filen inte välformad. Försök rätta till innan du går till nästa steg. Du kan be om hjälp av någon lärare eller kompisar.</p>
+		<h2>Steg 2</h2>
+		<p>Nu har du en välformad xml-fil. Du ska öppna filen på din webbläsare (FireFox eller Explorer). Antingen går du till katalogen och hittar mappen xmlOvning och högerklickar filnamnet sedan väljer Öppna med FireFox, eller öppnar du först din webbläsare och med <strong>ctrl+ o</strong>öppnar du ett litet fönster Open file där du kan välja filen. Hur ser den ut i webbläsaren? Inget felmeddelande heller? Nej. Filen är ju välformad.</p>
+		<p>Innan giltighet kollar vi närmare välformadhet, dvs xml:s allmänna regler. Därför se till att dtd-länken inte finns i xml-filen. Nu ska du prova med vanliga fel (regelbrott) för att se hur EditiX och FireFox reagerar. Du kan byta ut "c" i början av starttaggen för rootelementet till "C", en vasal. Spara filen. Kör Kontroll genom ctrl + K. Vad säger EditiX? Vad händer när filen öppnas (eller bara uppdateras genom F5 eller webbläsarens uppdateringsknapp) på webbläsaren? Varför blir det som det blev? Du kan rätta och spara filen igen. Uppdatera webbläsaren.</p>
+		<p>Nu ska du radera något tecken i en av taggarna, t.ex. "/" eller "&lt;" eller någon bokstav. Spara filen. Kör kontrollen. Vad säger EditiX? Vad händer när filen öppnas (eller bara uppdateras) på webbläsaren? Varför blir det som det blev? Du kan rätta och spara filen igen. Uppdatera webbläsaren.</p>
+		<p>Du ska nu radera någon start- eller sluttagg helt. Spara filen. Kör kontroll. Vad säger EditiX? Vad händer när filen öppnas (eller bara uppdateras) på webbläsaren? Varför blir det som det blev? Du kan rätta och spara filen igen. Uppdatera webbläsaren.</p>
+		<p>Här gången provar vi ett felaktigt nästlande. Du flyttar author-elementets sluttagg till framför fname-elementets sluttagg. Spara filen. Editix kan börja klaga innan sparandet. Kör kontroll. Vad säger EditiX? Uppdatera webbläsaren för att se vad som händer. Varför blir det som det blev? Rätta filen i Editix igen och uppdatera webbläsaren.</p>
+		
+		<h2>Steg 3</h2>
+		<p>I det här läget har du lärt dig hur ett fel kan ser ut i Editix och en webbläsare. Dessvärre kan ett fel synas bara i webbläsaren också, men detta kommer vi ta upp i samband med SKOS.</p>
+		<p>Nu lägger du länken till en dtd-fil, books-dtd i xml-filen. Dokumenttyp-deklarationen ska skrivas in i XML-filen, </br>
+			<code>&lt;!DOCTYPE collection SYSTEM "books.dtd"&gt;</code></br> efter xml-deklarationen. Spara xml-filen i Editix. Vad säger EditiX? Vad säger webbläsaren? 
+		<p>Så nu måste du ladda ner filen books.dtd från kursaktiviteten i Ping Pong och spara den i samma mapp som xml-filen, så att xml-filen kan kopplas till dtd-filen utan en sökväg. Om de ligger i samma mapp räcker det med filnamn för att hitta. Kontrollera om inget felmeddelande genereras. Uppdatera webbläsaren. Visas xml-filen korrekt? XML-filen är nu dessutom giltig.</p>
+		<p>Du ska ta bort hela title-elementet. Spara. Kontrollera vad som händer i EditiX och i webbläsaren. Fundera varför det blir som det blev genom att öppna dtd-filen och tolka reglerna/definitionerna där. Lägg tillbaka title-elementet efter isbn-elementet.</p>
+		<p>Du ska ta bort hela isbn-elementet. Spara. Kontrollera vad som händer i EditiX och i webbläsaren. Varför blir det som det blev? Lägg tillbaka isbn-elementet mellan book- och title-elementen och spara /uppdatera.</p>
+		<p>Du ska skriva in ett title-element till efter det andra title-elementet. Spara. Kontrollera vad som händer i EditiX och i webbläsaren. Varför blir det som det blev? Rätta till och spara /uppdatera.</p>
+		<p>Du ska byta plats av isbn-elementet och titel-elementet. Spara och kontrollera. Varför blir det som det blev? Rätta till och spara /uppdatera.</p>
+		<p>Du ska lägga till ett nytt page-element efter det originella page-elementet.Spara och kontrollera. Varför blir det som det blev?</p>
+		<p>Du ska lägga till ett dimension-element med något värde i efter något page-element. Spara och kontrollera. Varför blir det som det blev? Var kan du flytta extention-elementet utan att få ett felmeddelande?</p>
+		<p>Ta bort värdet av page-elementet, dvs "454 sidor". Spara och kontrollera. Varför blir det som det blev? Rätta till och spara /uppdatera.</p>
+		<p>Ta bort attributet i book-elementets starttagg. Spara och kontrollera. Varför blir det som det blev? Rätta till och spara /uppdatera.</p>
+		<p>Ta bort attributet i author-elementets starttagg. Spara och kontrollera. Varför blir det som det blev? Rätta till och spara /uppdatera.</p>
+		
+		
+		<h2>Steg 4</h2>
+		<p>Här gången ska du behålla filen giltig och välformad medan du utökar filens innehåll. Du ska lägga till ett author-element. Var försiktig med ordning av gname- och fname-element. Spara och kontrollera.</p>
+		<p>Du ska skapa ett nytt book-element till. Hitta någon katalogpost och skapa ett book-element efter den. Lycka till!</p>
+	</div>
+	
+</body>
+</html>
